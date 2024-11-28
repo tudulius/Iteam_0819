@@ -1,0 +1,111 @@
+{% extends 'base.html' %} 
+{% block title %}
+    <title>Profile edit</title>
+{% endblock %} 
+{% block maincontent %}
+    <div class="col-sm-9 content mt-5 offset-sm-3">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-6">
+                <img src="{{ url_for('static',filename='img/PROFILEEDIT.png') }}" alt="logo"  class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <hr>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-7">
+                <form action="{{ url_for('profile_edit') }}" method="post" class="nes-field">
+                    <p class="text-start fs-5 fw-bold mb-1">ユーザ名</p>
+                    <input type="text" id="username" name="username" class="nes-input mb-4" value="{{ user.username }}" required>
+                    <p class="text-start fs-5 fw-bold mb-1">メールアドレス</p>
+                    <input type="email" id="email" name="email" class="nes-input mb-4" value="{{ user.email }}" required>
+                    <p class="text-start fs-5 fw-bold mb-1">居住地</p>
+                    <div class="nes-select">
+                        <select required id="address" name="address" class="mb-4">
+                            <option value="北海道" {% if user.address == '北海道' %}selected{% endif %}>北海道</option>
+                            <option value="青森県" {% if user.address == '青森県' %}selected{% endif %}>青森県</option>
+                            <option value="岩手県" {% if user.address == '岩手県' %}selected{% endif %}>岩手県</option>
+                            <option value="宮城県" {% if user.address == '宮城県' %}selected{% endif %}>宮城県</option>
+                            <option value="秋田県" {% if user.address == '秋田県' %}selected{% endif %}>秋田県</option>
+                            <option value="山形県" {% if user.address == '山形県' %}selected{% endif %}>山形県</option>
+                            <option value="福島県" {% if user.address == '福島県' %}selected{% endif %}>福島県</option>
+                            <option value="茨城県" {% if user.address == '茨城県' %}selected{% endif %}>茨城県</option>
+                            <option value="栃木県" {% if user.address == '栃木県' %}selected{% endif %}>栃木県</option>
+                            <option value="群馬県" {% if user.address == '群馬県' %}selected{% endif %}>群馬県</option>
+                            <option value="埼玉県" {% if user.address == '埼玉県' %}selected{% endif %}>埼玉県</option>
+                            <option value="千葉県" {% if user.address == '千葉県' %}selected{% endif %}>千葉県</option>
+                            <option value="東京都" {% if user.address == '東京都' %}selected{% endif %}>東京都</option>
+                            <option value="神奈川県" {% if user.address == '神奈川県' %}selected{% endif %}>神奈川県</option>
+                            <option value="新潟県" {% if user.address == '新潟県' %}selected{% endif %}>新潟県</option>
+                            <option value="富山県" {% if user.address == '富山県' %}selected{% endif %}>富山県</option>
+                            <option value="石川県" {% if user.address == '石川県' %}selected{% endif %}>石川県</option>
+                            <option value="福井県" {% if user.address == '福井県' %}selected{% endif %}>福井県</option>
+                            <option value="山梨県" {% if user.address == '山梨県' %}selected{% endif %}>山梨県</option>
+                            <option value="長野県" {% if user.address == '長野県' %}selected{% endif %}>長野県</option>
+                            <option value="岐阜県" {% if user.address == '岐阜県' %}selected{% endif %}>岐阜県</option>
+                            <option value="静岡県" {% if user.address == '静岡県' %}selected{% endif %}>静岡県</option>
+                            <option value="愛知県" {% if user.address == '愛知県' %}selected{% endif %}>愛知県</option>
+                            <option value="三重県" {% if user.address == '三重県' %}selected{% endif %}>三重県</option>
+                            <option value="滋賀県" {% if user.address == '滋賀県' %}selected{% endif %}>滋賀県</option>
+                            <option value="京都府" {% if user.address == '京都府' %}selected{% endif %}>京都府</option>
+                            <option value="大阪府" {% if user.address == '大阪府' %}selected{% endif %}>大阪府</option>
+                            <option value="兵庫県" {% if user.address == '兵庫県' %}selected{% endif %}>兵庫県</option>
+                            <option value="奈良県" {% if user.address == '奈良県' %}selected{% endif %}>奈良県</option>
+                            <option value="和歌山県" {% if user.address == '和歌山県' %}selected{% endif %}>和歌山県</option>
+                            <option value="鳥取県" {% if user.address == '鳥取県' %}selected{% endif %}>鳥取県</option>
+                            <option value="島根県" {% if user.address == '島根県' %}selected{% endif %}>島根県</option>
+                            <option value="岡山県" {% if user.address == '岡山県' %}selected{% endif %}>岡山県</option>
+                            <option value="広島県" {% if user.address == '広島県' %}selected{% endif %}>広島県</option>
+                            <option value="山口県" {% if user.address == '山口県' %}selected{% endif %}>山口県</option>
+                            <option value="徳島県" {% if user.address == '徳島県' %}selected{% endif %}>徳島県</option>
+                            <option value="香川県" {% if user.address == '香川県' %}selected{% endif %}>香川県</option>
+                            <option value="愛媛県" {% if user.address == '愛媛県' %}selected{% endif %}>愛媛県</option>
+                            <option value="高知県" {% if user.address == '高知県' %}selected{% endif %}>高知県</option>
+                            <option value="福岡県" {% if user.address == '福岡県' %}selected{% endif %}>福岡県</option>
+                            <option value="佐賀県" {% if user.address == '佐賀県' %}selected{% endif %}>佐賀県</option>
+                            <option value="長崎県" {% if user.address == '長崎県' %}selected{% endif %}>長崎県</option>
+                            <option value="熊本県" {% if user.address == '熊本県' %}selected{% endif %}>熊本県</option>
+                            <option value="大分県" {% if user.address == '大分県' %}selected{% endif %}>大分県</option>
+                            <option value="宮崎県" {% if user.address == '宮崎県' %}selected{% endif %}>宮崎県</option>
+                            <option value="鹿児島県" {% if user.address == '鹿児島県' %}selected{% endif %}>鹿児島県</option>
+                            <option value="沖縄県" {% if user.address == '沖縄県' %}selected{% endif %}>沖縄県</option>
+                        </select>
+                    </div>
+                    <p class="text-start fs-5 fw-bold mb-1">あいさつ文</p>
+                    <textarea id="greeting" name="greeting" class="nes-input mb-4" rows="4" required>{{ user.greeting }}</textarea>
+                    <p class="text-start fs-5 fw-bold mb-1">アイコン</p>
+                    <div class="row mb-4">
+                        <div class="col-5">
+                            <div class="nes-select">
+                                <select required name="icon" id="icon" class="">
+                                    <option value="" disabled selected hidden>アイコンを選択</option>
+                                    {% for icon in icons %}
+                                        <option value="{{ icon }}" {% if user.icon == icon %}selected{% endif %}>{{ icon }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="icon-preview">
+                                <img id="icon-preview-img" src="{{ url_for('static', filename='img/icon/' + user.icon) }}" alt="アイコンプレビュー" width="160" height="160" class="img-fluid"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4"><a class="nes-btn" href="{{ url_for('profile') }}">戻る</a></div>
+                        <div class="col-4"><button type="submit" class="nes-btn is-primary">変更</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('icon').addEventListener('change', function() {
+            const icon = this.value;
+            const imgPath = "{{ url_for('static', filename='img/icon/') }}" + icon;
+            document.getElementById('icon-preview-img').src = imgPath;
+        });
+    </script>
+{% endblock %}

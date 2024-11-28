@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+        <!-- title-->
+    {% endblock %}
+    <!-- NES.cssの反映 -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- bootstrapv5.3の反映 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!--  スタイルシートの反映 -->
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static',filename='css/styles.css')}}">
+    {% block chat_jscript %}{% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- ヘッダー -->
+        <div class="row header fixed-top m-0 z-3">
+            <div class="col-6 site-title">
+                <a href="{{ url_for('home') }}"><img src="{{ url_for('static',filename='img/HelloFrom.png') }}" alt="logo"  class="header-logo"/></a>
+            </div>
+            <div class="col-6 dropdown text-end">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ url_for('static', filename='img/icon/' + user.icon) }}" alt="User Icon" width="32" height="32" class="">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="{{ url_for('profile') }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="{{ url_for('login') }}">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row flex-grow-1 main-content z-2">
+            <!-- サイドバー -->
+            <div class="col-sm-3 sidebar d-none d-sm-block fixed-left">
+                <p class="side-botton"><a href="{{ url_for('chat_list') }}"><img src="{{ url_for('static',filename='img/CHATLIST.png') }}" alt="logo"  class="side-logo"/></a></p>
+                <p class="side-botton"><a href="{{ url_for('matching') }}"><img src="{{ url_for('static',filename='img/matching.png') }}" alt="logo"  class="side-logo"/></a></p>
+                <!-- <p>マッチング依頼</p> -->
+            </div>
+            {% block maincontent %}
+                <!-- メインコンテンツ-->
+            {% endblock %}
+        </div>
+        <!-- フッター -->
+        <div class="row footer-nav d-sm-none justify-content-center fixed-bottom m-0 z-2">
+            <div class="col"><a href="{{ url_for('chat_list') }}"><img src="{{ url_for('static',filename='img/CHATLIST.png') }}" alt="logo"  class="side-logo"/></a></div>
+            <div class="col"><a href="{{ url_for('matching') }}"><img src="{{ url_for('static',filename='img/matching.png') }}" alt="logo"  class="side-logo"/></a></div>
+            <!-- <div class="col">マッチング依頼</div> -->
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    {% block jscript %}
+    {% endblock %}
+</body>
+</html>

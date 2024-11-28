@@ -1,0 +1,57 @@
+{% extends 'base.html' %} 
+{% block title %}
+    <title>Profile</title>
+{% endblock %} 
+{% block maincontent %}
+    <div class="col-sm-9 content mt-5 offset-sm-3">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-4">
+                <img src="{{ url_for('static',filename='img/PROFILE.png') }}" alt="logo"  class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <hr>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <img src="{{ url_for('static', filename='img/icon/' + user.icon) }}" alt="User Icon" width="160" height="160" class="img-fluid">
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-12"><p class="text-start fs-5 fw-bold">ユーザ名</p></div>
+                    <div class="col-12"><p class="fs-6"> {{ user.username }} </p></div>
+                </div>
+                <div class="col-11">
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-12"><p class="text-start fs-5 fw-bold">メールアドレス</p></div>
+                    <div class="col-12"><p class="fs-6"> {{ user.email }} </p></div>
+                </div>
+                <div class="col-11">
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-12"><p class="text-start fs-5 fw-bold">居住地</p></div>
+                    <div class="col-12"><p class="fs-6"> {{ user.address }} </p></div>
+                </div>
+                <div class="col-11">
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="col-12"><p class="text-start fs-5 fw-bold">あいさつ文</p></div>
+                    <div class="col-12"><p class="fs-6"> {{ user.greeting }} </p></div>    
+                </div>
+                <div class="col-11">
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-3"><a class="nes-btn" href="{{ url_for('home') }}">ホーム</a></div>
+            <div class="col-3"><a class="nes-btn is-primary" href="{{ url_for('profile_edit') }}">変更</a></div>
+        </div>
+    </div>
+{% endblock %} 

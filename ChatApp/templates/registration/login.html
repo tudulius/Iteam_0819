@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- NES.cssの反映 -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- bootstrapv5.3の反映 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!--  スタイルシートの反映 -->
+    <link rel="stylesheet" type= "text/css" href="{{url_for('static',filename='css/registration.css')}}">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row my-4">
+            <div class="col-6 col-md-3 col-xl-2">
+                <img src="{{ url_for('static',filename='img/HelloFrom.png') }}" alt="logo"  class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row mt-3 mb-5 justify-content-center">
+            <div class="col-6 col-md-3">
+                <img src="{{ url_for('static',filename='img/LOGIN.png') }}" alt="login"  class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row mt-3 mb-5 d-flex justify-content-center">
+            <div class="col-6 d-flex justify-content-center">
+                {% with messages = get_flashed_messages() %} {% if messages %}
+                <ul class="list-group list-group-flush">
+                    {% for message in messages %}
+                    <li class="list-group-item fw-bold text-danger">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endwith %}
+            </div>
+        </div>
+        <div class="row mt-3 mb-5 justify-content-center">
+            <form method="post" class="nes-field col-10 col-md-5"> 
+                <div class="row mb-4">
+                    <div class="col-12"><label for="email">メールアドレス</label></div>
+                    <div class="col-12"><input type="email" name="email" id="email" class="nes-input"></div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12"><label for="password">パスワード</label></div>
+                    <div class="col-12"><input type="password" name="password" id="password" class="nes-input"></div>
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-between">
+                        <div class="col-4"><a class="nes-btn link-underline link-underline-opacity-0" href="{{ url_for('signup') }}">新規会員登録</a></div>
+                        <div class="col-offset-4 col-4"><button type="submit" class="nes-btn is-success float-end">ログイン</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row fixed-bottom">
+            <div class="col-12 txt_anime">
+                <img src="{{ url_for('static',filename='img/backDotImg/hitoDot.gif') }}" alt="walkingHuman" class="">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

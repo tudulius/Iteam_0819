@@ -1,0 +1,64 @@
+{% extends 'base.html' %} 
+{% block title %}
+    <title>Chat</title>
+{% endblock %} 
+{% block chat_jscript %}
+<script>
+    window.onload = function() {
+        window.scrollTo(0, document.body.scrollHeight);
+    };
+</script>
+{% endblock %}
+{% block maincontent %}
+    <div class="col-sm-9 content mt-5 offset-sm-3">
+        <div class="row fixed-top mx-0 justify-content-end chatHead z-2">
+            <div class="col-12 col-sm-9 bg-white border-bottom">
+                <div class="row">
+                    <div class="col-2 d-inline-flex mt-3 mb-2"><a class="nes-btn" href="{{ url_for('chat_list') }}">退出</a></div>
+                    <div class="col-10 d-flex align-items-center justify-content-center mt-3 mb-2">
+                        <p class="mb-0">{{ user.username }} & {{ selected_user.username if selected_user else 'Unknown' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <section class="message-list chatContent">
+                {% for message in messages %}
+                    {% if message['uid'] == user['uid'] %}
+                    <!-- ログインユーザーのメッセージ -->
+                    <section class="message -right d-flex justify-content-end align-items-center">
+                        <div class="d-flex flex-column">
+                            <p class="text-end m-0">{{ message['created_at'].strftime('%Y/%m/%d') }}</p>
+                            <p class="text-end m-0">{{ message['created_at'].strftime('%H:%M') }}</p>
+                        </div>
+                        <div class="nes-balloon from-right">
+                            <p class="text-start message-style">{{ message['message'] }}</p>
+                        </div>
+                        <img src="{{ url_for('static', filename='img/icon/' ~ user['icon']) }}" alt="User Icon" width="80" height="80" class="">
+                    </section>
+                    {% else %}
+                    <!-- 相手側のメッセージ -->
+                    <section class="message -left d-flex justify-content-start align-items-center">
+                        <img src="{{ url_for('static', filename='img/icon/' ~ message['icon']) }}" alt="User Icon" width="80" height="80" class="">
+                        <div class="nes-balloon from-left">
+                            <p class="text-start message-style">{{ message['message'] }}</p>
+                        </div>
+                        <div class="d-flex flex-column align-items-start">
+                            <p class="text-start m-0">{{ message['created_at'].strftime('%Y/%m/%d') }}</p>
+                            <p class="text-start m-0">{{ message['created_at'].strftime('%H:%M') }}</p>
+                        </div>
+                    </section>
+                    {% endif %}
+                {% endfor %}
+            </section>
+        </div>
+        <form action="#" method="post">
+            <div class="row fixed-bottom mx-0 justify-content-end chatbox z-2">
+                <div class="nes-field col-12 col-sm-9 bg-white is-inline">
+                    <input type="text" id="chat_text" name="message" class="nes-input my-2" placeholder="Type your message here">
+                    <button type="submit" class="nes-btn is-primary">SEND</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

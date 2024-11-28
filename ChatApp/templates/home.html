@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+{% block title %}
+    <title>Home</title>
+{% endblock %} 
+{% block maincontent %}
+    <div class="col-sm-9 content mt-5 offset-sm-3 win-high">
+        <div class="row position-relative h-100">
+            <div class="txt_anime z-3">
+                <img src="{{ url_for('static',filename='img/backDotImg/hitoDot.gif') }}" alt="walkingHuman" class="">
+            </div>
+            <div class="col-4 position-absolute top-0 start-0 bg-img z-0">
+                <img src="{{ url_for('static',filename='img/backDotImg/home-base-sakura.png') }}" alt="sakura" class="img-fluid">
+            </div>
+            <div class="col-4 position-absolute top-0 end-0 bg-img z-0">
+                <img src="{{ url_for('static',filename='img/backDotImg/home-base-tent.png') }}" alt="tent" class="img-fluid">
+            </div>
+            <div class="col-12 z-3">
+                <a href="{{ url_for('chat_list') }}" class="image_link">
+                    <img src="{{ url_for('static',filename='img/chatlistHome.png') }}" alt="chatlist"  class="img-fluid"/>
+                </a>
+            </div>
+            <div class="col-12 z-3">
+                <a href="{{ url_for('matching') }}" class="image_link">
+                    <img src="{{ url_for('static',filename='img/matchingHome.png') }}" alt="matching"  class="img-fluid"/>
+                </a>
+            </div>
+            <div class="col-4 position-absolute bottom-0 start-0 bg-img z-0">
+                <img src="{{ url_for('static',filename='img/backDotImg/home-base-summer.png') }}" alt="summer" class="img-fluid">
+            </div>
+            <div class="col-4 position-absolute bottom-0 end-0 bg-img z-0">
+                <img src="{{ url_for('static',filename='img/backDotImg/home-base-tokyo.png') }}" alt="tokyo" class="img-fluid">
+            </div>
+        </div>
+    </div>
+{% endblock %} 

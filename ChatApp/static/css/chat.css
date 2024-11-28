@@ -1,0 +1,34 @@
+.chatHead{
+    margin-top: 50px;
+}
+.chatContent{
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+.message-style{
+    max-width: 40rem;
+    overflow-wrap: break-word;
+}
+@media (max-width: 768px) {
+    .nes-field.is-inline{
+        display: flex;
+    }
+}
+   
+@media (max-width: 576px) {
+    .chatContent{
+        margin-bottom: 100px;
+    }
+    .chatbox{
+        margin-bottom: 50px;
+    }
+    .nes-field.is-inline{
+        display: flex;
+    }
+    .nes-field.nes-input{
+        display: inline-block;
+    }
+    .nes-input{
+        width: calc(100% - 130px);
+    }
+}

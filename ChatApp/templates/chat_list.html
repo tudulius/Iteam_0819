@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% block title %}
+    <title>Chatlist</title>
+{% endblock %} 
+{% block maincontent %}
+    <div class="col-sm-9 content mt-5 offset-sm-3">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-4">
+                <img src="{{ url_for('static',filename='img/CHATLIST.png') }}" alt="logo"  class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <hr>
+            </div>
+        </div>
+        {% if chat_rooms %}
+            {% for room in chat_rooms %}
+            <div class="row justify-content-center d-flex align-items-center mb-3 position-relative image_link">
+                <a href="{{ url_for('chat', room_id=room['id']) }}" class="stretched-link"></a>
+                <div class="col-2">
+                    <img src="{{ room['icon'] }}" alt="User Icon" width="80" height="80" class="">
+                </div>
+                <div class="col-lg-4 col-8">
+                    <p class="mb-0">{{ room['name'] }}のチャットルーム</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <li>チャットルームがありません。</li>
+        {% endif %}
+    </div>
+{% endblock %}

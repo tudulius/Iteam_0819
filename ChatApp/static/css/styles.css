@@ -1,0 +1,11 @@
+/* 要素の大きさ検証用 */
+/* * {
+    outline: 1px solid #ff0099;
+  } */
+
+/* 全てのCSSをまとめてエクスポート */
+@import "color.css";
+@import "base.css";
+@import "home.css";
+@import "chat.css";
+@import "matching.css";

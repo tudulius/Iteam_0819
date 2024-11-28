@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <!-- NES.cssの反映 -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+    <!-- bootstrapv5.3の反映 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row my-4">
+            <div class="col-6 col-md-3 col-xl-2">
+                <img src="{{ url_for('static',filename='img/HelloFrom.png') }}" alt="logo"  class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row mt-3 mb-3 justify-content-center">
+            <div class="col-6 col-md-3">
+                <img src="{{ url_for('static',filename='img/SIGNUP.png') }}" alt="signup"  class="img-fluid"/>
+            </div>
+        </div>
+        <div class="row mt-2 mb-2 d-flex justify-content-center">
+            <div class="col-6 d-flex justify-content-center">
+                {% with messages = get_flashed_messages() %} {% if messages %}
+                <ul class="list-group list-group-flush">
+                    {% for message in messages %}
+                    <li class="list-group-item fw-bold text-danger">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %} {% endwith %}
+            </div>
+        </div>
+        <div class="row mt-3 mb-5 justify-content-center">
+            <form method="post" class="nes-field col-10 col-md-5"> 
+                <div class="row mb-2">
+                    <div class="col-12"><label for="username">ユーザー名</label></div>
+                    <div class="col-12"><input type="text" name="username" id="username" class="nes-input"></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12"><label for="email">メールアドレス</label></div>
+                    <div class="col-12"><input type="email" name="email" id="email" class="nes-input"></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12"><label for="password1">パスワード</label></div>
+                    <div class="col-12"><input type="password" name="password1" id="password1" class="nes-input"></div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-12"><label for="password2">パスワード（確認）</label></div>
+                    <div class="col-12"><input type="password" name="password2" id="password2" class="nes-input"></div>
+                </div>
+                <div class="row mb-2 nes-field">
+                    <div class="col-12"><label for="address">居住地</label></div>
+                    <div class="col-12 nes-select">
+                        <select required name="address" id="default_select">
+                            <option value="" disabled selected hidden>----</option>
+                            <option value="北海道">北海道</option>
+                            <option value="青森県">青森県</option>
+                            <option value="岩手県">岩手県</option>
+                            <option value="宮城県">宮城県</option>
+                            <option value="秋田県">秋田県</option>
+                            <option value="山形県">山形県</option>
+                            <option value="福島県">福島県</option>
+                            <option value="茨城県">茨城県</option>
+                            <option value="栃木県">栃木県</option>
+                            <option value="群馬県">群馬県</option>
+                            <option value="埼玉県">埼玉県</option>
+                            <option value="千葉県">千葉県</option>
+                            <option value="東京都">東京都</option>
+                            <option value="神奈川県">神奈川県</option>
+                            <option value="新潟県">新潟県</option>
+                            <option value="富山県">富山県</option>
+                            <option value="石川県">石川県</option>
+                            <option value="福井県">福井県</option>
+                            <option value="山梨県">山梨県</option>
+                            <option value="長野県">長野県</option>
+                            <option value="岐阜県">岐阜県</option>
+                            <option value="静岡県">静岡県</option>
+                            <option value="愛知県">愛知県</option>
+                            <option value="三重県">三重県</option>
+                            <option value="滋賀県">滋賀県</option>
+                            <option value="京都府">京都府</option>
+                            <option value="大阪府">大阪府</option>
+                            <option value="兵庫県">兵庫県</option>
+                            <option value="奈良県">奈良県</option>
+                            <option value="和歌山県">和歌山県</option>
+                            <option value="鳥取県">鳥取県</option>
+                            <option value="島根県">島根県</option>
+                            <option value="岡山県">岡山県</option>
+                            <option value="広島県">広島県</option>
+                            <option value="山口県">山口県</option>
+                            <option value="徳島県">徳島県</option>
+                            <option value="香川県">香川県</option>
+                            <option value="愛媛県">愛媛県</option>
+                            <option value="高知県">高知県</option>
+                            <option value="福岡県">福岡県</option>
+                            <option value="佐賀県">佐賀県</option>
+                            <option value="長崎県">長崎県</option>
+                            <option value="熊本県">熊本県</option>
+                            <option value="大分県">大分県</option>
+                            <option value="宮崎県">宮崎県</option>
+                            <option value="鹿児島県">鹿児島県</option>
+                            <option value="沖縄県">沖縄県</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-12"><label for="greeting">あいさつ</label></div>
+                    <div class="col-12"><input type="text" name="greeting" id="greeting" class="nes-input"></div>
+                </div>
+                <div class="row mb-4 d-none">
+                    <div class="col-12"><label for="icon">アイコン</label></div>
+                    <div class="col-12"><input type="text" name="icon" id="icon" class="nes-input"></div>
+                </div>
+                <div class="row">
+                    <div class="d-flex justify-content-between">
+                        <div class="col-4"><a class="nes-btn link-underline link-underline-opacity-0" href="{{ url_for('login') }}">ログイン画面</a></div>
+                        <div class="col-offset-4 col-4"><button type="submit" class="nes-btn is-success float-end">登録</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script>
+        window.onload = function() { // ページが読み込まれたときに呼び出される関数
+            const iconArray = [
+            "beaver.png", "beetle.png", "chick.png", "crab.png", "dog.png", "dolphin.png", "elephant.png", "frog.png", "giraffe.png", "gorilla.png", "hedgehog.png", "horse.png", "ladybug.png", "lion.png", "octopus.png", "peacock.png", "pig.png", "sloth.png", "snail.png", "squirrel.png", "turtle.png", "whale.png", "bear.png"
+            ]; //アイコンの配列
+            const iconValue = iconArray[Math.floor(Math.random() * iconArray.length)];//ランダムに1つ取得
+            var iconInput = document.getElementById("icon");
+            iconInput.value = iconValue;
+        };
+    </script>
+</body>
+</html>
